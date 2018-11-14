@@ -62,10 +62,7 @@ class CEKRequest {
 
   launchRequest(cekResponse) {
     console.log('launchRequest')
-    cekResponse.setSimpleSpeechText('몇개의 주사위를 던질까요?')
-    cekResponse.setMultiturn({
-      intent: 'ThrowDiceIntent',
-    })
+    cekResponse.setSimpleSpeechText("안녕하세요 호빵맨입니다 메뉴판을 보시고 손님께서 원하시는 메뉴를 말해주세요.");
   }
 
   intentRequest(cekResponse) {
@@ -85,7 +82,7 @@ class CEKRequest {
 
         //   if (isNaN(diceCount)) {
         //     diceCount = 1
-        //   }
+        //   }햣 
         // }
         cekResponse.setSimpleSpeechText("피자 호빵을 주문 하셨군요.");
         break
