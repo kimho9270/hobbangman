@@ -3,7 +3,7 @@ const _ = require('lodash')
 const { DOMAIN } = require('../config')
 
 class Directive {
-  constructor({namespace, name, payload}) {
+  constructor({ namespace, name, payload }) {
     this.header = {
       messageId: uuid(),
       namespace: namespace,
@@ -13,7 +13,7 @@ class Directive {
   }
 }
 
-function resultText({midText, sum, diceCount}) {
+function resultText({ midText, sum, diceCount }) {
   if (diceCount == 1) {
     return `결과는 ${sum}입니다.`
   } else if (diceCount < 4) {
@@ -38,11 +38,11 @@ function throwDice(diceCount) {
   }
 
   midText = midText.replace(/, $/, '')
-  return {midText, sum, diceCount}
+  return { midText, sum, diceCount }
 }
 
 class CEKRequest {
-  constructor (httpReq) {
+  constructor(httpReq) {
     this.request = httpReq.body.request
     this.context = httpReq.body.context
     this.session = httpReq.body.session
@@ -75,30 +75,23 @@ class CEKRequest {
     const slots = this.request.intent.slots
 
     switch (intent) {
-    case 'ThrowDiceIntent':
-      let diceCount = 1
-      if (!!slots) {
-        const diceCountSlot = slots.diceCount
-        if (slots.length != 0 && diceCountSlot) {
-          diceCount = parseInt(diceCountSlot.value)
-        }
+      case 'orderIntent':
+        // let diceCount = 1
+        // if (!!slots) {
+        //   const diceCountSlot = slots.diceCount
+        //   if (slots.length != 0 && diceCountSlot) {
+        //     diceCount = parseInt(diceCountSlot.value)
+        //   }
 
-        if (isNaN(diceCount)) {
-          diceCount = 1
-        }
-      }
-      cekResponse.appendSpeechText(`주사위를 ${diceCount}개 던집니다.`)
-      cekResponse.appendSpeechText({
-        lang: 'ko',
-        type: 'URL',
-        value: `${DOMAIN}/rolling_dice_sound.mp3`,
-      })
-      const throwResult = throwDice(diceCount)
-      cekResponse.appendSpeechText(resultText(throwResult))
-      break
-    case 'Clova.GuideIntent':
-    default:
-      cekResponse.setSimpleSpeechText("주사위 한 개 던져줘, 라고 시도해보세요.")
+        //   if (isNaN(diceCount)) {
+        //     diceCount = 1
+        //   }
+        // }
+        cekResponse.setSimpleSpeechText("피자 호빵을 주문 하셨군요.");
+        break
+      case 'Clova.GuideIntent':
+      default:
+        cekResponse.setSimpleSpeechText("주사위 한 개 던져줘, 라고 시도해보세요.")
     }
 
     if (this.session.new == false) {
@@ -114,7 +107,7 @@ class CEKRequest {
 }
 
 class CEKResponse {
-  constructor () {
+  constructor() {
     console.log('CEKResponse constructor')
     this.response = {
       directives: [],
@@ -140,9 +133,9 @@ class CEKResponse {
     this.response.outputSpeech = {
       type: 'SimpleSpeech',
       values: {
-          type: 'PlainText',
-          lang: 'ko',
-          value: outputText,
+        type: 'PlainText',
+        lang: 'ko',
+        value: outputText,
       },
     }
   }
@@ -153,7 +146,7 @@ class CEKResponse {
       outputSpeech.type = 'SpeechList'
       outputSpeech.values = []
     }
-    if (typeof(outputText) == 'string') {
+    if (typeof (outputText) == 'string') {
       outputSpeech.values.push({
         type: 'PlainText',
         lang: 'ko',
