@@ -64,7 +64,7 @@ class CEKRequest {
     console.log('launchRequest')
     cekResponse.setSimpleSpeechText("안녕하세요 호빵맨입니다 메뉴판을 보시고 손님께서 원하시는 메뉴를 말해주세요.");
     cekResponse.setMultiturn({
-      
+      intent: 'orderIntent'
     })
   }
 
