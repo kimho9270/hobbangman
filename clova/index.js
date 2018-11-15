@@ -62,7 +62,7 @@ class CEKRequest {
 
   launchRequest(cekResponse) {
     console.log('launchRequest')
-    cekResponse.setSimpleSpeechText("안녕하세요 호빵맨입니다 메뉴판을 보시고 손님께서 원하시는 메뉴를 말해주세요.");
+    cekResponse.setSimpleSpeechText("안녕하세요 호빵맨입니다 메뉴판을 보시고 손님께서 원하시는 메뉴와 갯수를 말해주세요.");
     cekResponse.setMultiturn({
       intent: 'orderIntent'
     })
@@ -85,9 +85,21 @@ class CEKRequest {
 
         //   if (isNaN(diceCount)) {
         //     diceCount = 1
-        //   }햣 
+        //   }
         // }
-        cekResponse.setSimpleSpeechText("피자 호빵을 주문 하셨군요.");
+        cekResponse.setSimpleSpeechText("주문해주셔서 감사합니다 알바들이 곧 호빵을 가지고 올꺼에요 좋은하루 되세요.")
+        
+        break
+      
+        //let hobbangcount = 1
+        //if (!!slots) {
+        //const hobbangcountSlot = slots.count
+          
+
+        //   if (isNaN(diceCount)) {
+        //     diceCount = 1
+        //   }
+        // }
         break
       case 'Clova.GuideIntent':
       default:
