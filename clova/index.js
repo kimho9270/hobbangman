@@ -88,7 +88,7 @@ class CEKRequest {
         //   }
         // }
         cekResponse.setSimpleSpeechText("주문해주셔서 감사합니다 알바들이 곧 호빵을 가지고올꺼에요 좋은하루 되세요.")
-        
+        cekResponse.clearMultiturn()
         break
       
         //let hobbangcount = 1
