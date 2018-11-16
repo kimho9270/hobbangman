@@ -103,7 +103,7 @@ class CEKRequest {
         break
       case 'Clova.GuideIntent':
       default:
-        cekResponse.setSimpleSpeechText("주사위 한 개 던져줘, 라고 시도해보세요.")
+        cekResponse.setSimpleSpeechText("다시 한번 말해주세요.")
     }
 
     if (this.session.new == false) {
